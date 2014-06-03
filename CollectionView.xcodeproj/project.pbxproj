@@ -21,6 +21,15 @@
 		FC48DDA7193C747D00A38A78 /* CollectionViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FC48DDA6193C747D00A38A78 /* CollectionViewTests.m */; };
 		FC48DDB2193C749D00A38A78 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC48DDB1193C749D00A38A78 /* ViewController.m */; };
 		FC48DDB6193C7D5200A38A78 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC48DDB5193C7D5200A38A78 /* CollectionViewCell.m */; };
+		FC4E5542193DB6CD006272FF /* CollectionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4E5541193DB6CD006272FF /* CollectionItem.m */; };
+		FC4E5545193DBCF3006272FF /* FRGWaterfallCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4E5544193DBCF3006272FF /* FRGWaterfallCollectionViewLayout.m */; };
+		FC4E5548193DBDD6006272FF /* FRGWaterfallDecorationReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4E5547193DBDD6006272FF /* FRGWaterfallDecorationReusableView.m */; };
+		FC4E554F193DC38E006272FF /* sample_image_1.png in Resources */ = {isa = PBXBuildFile; fileRef = FC4E554A193DC38E006272FF /* sample_image_1.png */; };
+		FC4E5550193DC38E006272FF /* sample_image_2.png in Resources */ = {isa = PBXBuildFile; fileRef = FC4E554B193DC38E006272FF /* sample_image_2.png */; };
+		FC4E5551193DC38E006272FF /* sample_image_3.png in Resources */ = {isa = PBXBuildFile; fileRef = FC4E554C193DC38E006272FF /* sample_image_3.png */; };
+		FC4E5552193DC38E006272FF /* sample_image_4.png in Resources */ = {isa = PBXBuildFile; fileRef = FC4E554D193DC38E006272FF /* sample_image_4.png */; };
+		FC4E5553193DC38E006272FF /* sample_image_5.png in Resources */ = {isa = PBXBuildFile; fileRef = FC4E554E193DC38E006272FF /* sample_image_5.png */; };
+		FC4E5555193DD175006272FF /* sample_image.png in Resources */ = {isa = PBXBuildFile; fileRef = FC4E5554193DD175006272FF /* sample_image.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +63,18 @@
 		FC48DDB1193C749D00A38A78 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		FC48DDB4193C7D5200A38A78 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
 		FC48DDB5193C7D5200A38A78 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
+		FC4E5540193DB6CD006272FF /* CollectionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionItem.h; sourceTree = "<group>"; };
+		FC4E5541193DB6CD006272FF /* CollectionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionItem.m; sourceTree = "<group>"; };
+		FC4E5543193DBCF3006272FF /* FRGWaterfallCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRGWaterfallCollectionViewLayout.h; sourceTree = "<group>"; };
+		FC4E5544193DBCF3006272FF /* FRGWaterfallCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRGWaterfallCollectionViewLayout.m; sourceTree = "<group>"; };
+		FC4E5546193DBDD6006272FF /* FRGWaterfallDecorationReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRGWaterfallDecorationReusableView.h; sourceTree = "<group>"; };
+		FC4E5547193DBDD6006272FF /* FRGWaterfallDecorationReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRGWaterfallDecorationReusableView.m; sourceTree = "<group>"; };
+		FC4E554A193DC38E006272FF /* sample_image_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample_image_1.png; sourceTree = "<group>"; };
+		FC4E554B193DC38E006272FF /* sample_image_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample_image_2.png; sourceTree = "<group>"; };
+		FC4E554C193DC38E006272FF /* sample_image_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample_image_3.png; sourceTree = "<group>"; };
+		FC4E554D193DC38E006272FF /* sample_image_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample_image_4.png; sourceTree = "<group>"; };
+		FC4E554E193DC38E006272FF /* sample_image_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample_image_5.png; sourceTree = "<group>"; };
+		FC4E5554193DD175006272FF /* sample_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample_image.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +104,7 @@
 		FC48DD75193C747D00A38A78 = {
 			isa = PBXGroup;
 			children = (
+				FC4E5549193DC38E006272FF /* Images */,
 				FC48DD87193C747D00A38A78 /* CollectionView */,
 				FC48DDA0193C747D00A38A78 /* CollectionViewTests */,
 				FC48DD80193C747D00A38A78 /* Frameworks */,
@@ -119,6 +141,12 @@
 				FC48DDB1193C749D00A38A78 /* ViewController.m */,
 				FC48DDB4193C7D5200A38A78 /* CollectionViewCell.h */,
 				FC48DDB5193C7D5200A38A78 /* CollectionViewCell.m */,
+				FC4E5540193DB6CD006272FF /* CollectionItem.h */,
+				FC4E5541193DB6CD006272FF /* CollectionItem.m */,
+				FC4E5546193DBDD6006272FF /* FRGWaterfallDecorationReusableView.h */,
+				FC4E5547193DBDD6006272FF /* FRGWaterfallDecorationReusableView.m */,
+				FC4E5543193DBCF3006272FF /* FRGWaterfallCollectionViewLayout.h */,
+				FC4E5544193DBCF3006272FF /* FRGWaterfallCollectionViewLayout.m */,
 				FC48DD93193C747D00A38A78 /* Images.xcassets */,
 				FC48DD88193C747D00A38A78 /* Supporting Files */,
 			);
@@ -152,6 +180,20 @@
 				FC48DDA3193C747D00A38A78 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FC4E5549193DC38E006272FF /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				FC4E5554193DD175006272FF /* sample_image.png */,
+				FC4E554A193DC38E006272FF /* sample_image_1.png */,
+				FC4E554B193DC38E006272FF /* sample_image_2.png */,
+				FC4E554C193DC38E006272FF /* sample_image_3.png */,
+				FC4E554D193DC38E006272FF /* sample_image_4.png */,
+				FC4E554E193DC38E006272FF /* sample_image_5.png */,
+			);
+			name = Images;
+			path = CollectionView/Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,7 +271,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC48DD8C193C747D00A38A78 /* InfoPlist.strings in Resources */,
+				FC4E5551193DC38E006272FF /* sample_image_3.png in Resources */,
+				FC4E5553193DC38E006272FF /* sample_image_5.png in Resources */,
+				FC4E554F193DC38E006272FF /* sample_image_1.png in Resources */,
+				FC4E5550193DC38E006272FF /* sample_image_2.png in Resources */,
+				FC4E5552193DC38E006272FF /* sample_image_4.png in Resources */,
 				FC48DD94193C747D00A38A78 /* Images.xcassets in Resources */,
+				FC4E5555193DD175006272FF /* sample_image.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,10 +296,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC4E5548193DBDD6006272FF /* FRGWaterfallDecorationReusableView.m in Sources */,
 				FC48DDB2193C749D00A38A78 /* ViewController.m in Sources */,
 				FC48DD92193C747D00A38A78 /* AppDelegate.m in Sources */,
+				FC4E5542193DB6CD006272FF /* CollectionItem.m in Sources */,
 				FC48DDB6193C7D5200A38A78 /* CollectionViewCell.m in Sources */,
 				FC48DD8E193C747D00A38A78 /* main.m in Sources */,
+				FC4E5545193DBCF3006272FF /* FRGWaterfallCollectionViewLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,6 +499,7 @@
 				FC48DDAC193C747D00A38A78 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FC48DDAD193C747D00A38A78 /* Build configuration list for PBXNativeTarget "CollectionViewTests" */ = {
 			isa = XCConfigurationList;
@@ -456,6 +508,7 @@
 				FC48DDAF193C747D00A38A78 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
