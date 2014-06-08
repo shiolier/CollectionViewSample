@@ -13,11 +13,11 @@
 
 #define CellID @"CollectionViewCell"
 
-@interface ViewController () <UICollectionViewDelegate, UICollectionViewDataSource, FRGWaterfallCollectionViewDelegate>
+@interface ViewController () <UICollectionViewDelegate, UICollectionViewDataSource, FRGWaterfallCollectionViewDelegate, UIScrollViewDelegate>
 
-@property UICollectionView *collectionView;
+@property (nonatomic) UICollectionView *collectionView;
 @property (nonatomic) NSMutableArray *collectionItems;
-
+@property (nonatomic) UIView *scrollContentView;
 
 @end
 
@@ -45,14 +45,25 @@
 //	// アイテム同士の間隔
 //    collectionViewFlowLayout.minimumInteritemSpacing = 10.0f;
 	
-	self.collectionItems = [NSMutableArray array];
-	for (int i = 0; i < 30; i++) {
-		CollectionItem *item = [[CollectionItem alloc] init];
-		item.text = [NSString stringWithFormat:@"%d", i];
-		int imageNumber = arc4random() % 5 + 1;
-		item.image_name = [NSString stringWithFormat:@"sample_image_%d", imageNumber];
-		[self.collectionItems addObject:item];
-	}
+	[self changeCollectionItems:0];
+	
+	UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100)];
+	scrollView.delegate = self;
+	// スクロール方法をページ単位にする
+	scrollView.pagingEnabled = YES;
+	[self.view addSubview:scrollView];
+	
+	int pageNum = 3;
+	CGSize onePageSize = scrollView.frame.size;
+	CGRect contentRect = CGRectMake(0, 0, onePageSize.width * pageNum, onePageSize.height);
+	
+	self.scrollContentView = [[UIView alloc] initWithFrame:contentRect];
+	[scrollView addSubview:self.scrollContentView];
+	
+	// スクロールするコンテントサイズを指定する
+	scrollView.contentSize = self.scrollContentView.frame.size;
+	// スクロール画面の初期位置を指定する
+	scrollView.contentOffset = CGPointZero;
 	
 	FRGWaterfallCollectionViewLayout *collectionViewLayout = [[FRGWaterfallCollectionViewLayout alloc] init];
 	collectionViewLayout.delegate = self;
@@ -61,18 +72,36 @@
 	collectionViewLayout.bottomInset = 10.0f;
 	collectionViewLayout.stickyHeader = YES;
 	
-	self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:collectionViewLayout];
+	self.collectionView =
+	[[UICollectionView alloc] initWithFrame:CGRectMake(0, 100,
+													   self.view.frame.size.width, self.view.frame.size.height - 100)
+					   collectionViewLayout:collectionViewLayout];
 	self.collectionView.delegate = self;
 	self.collectionView.dataSource = self;
 	// self.collectionView.backgroundColor = [UIColor whiteColor];
 	[self.collectionView registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:CellID];
 	[self.view addSubview:self.collectionView];
+	
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)changeCollectionItems:(int)pageNum
+{
+	self.collectionItems = [NSMutableArray array];
+	int itemNum = 10 * (pageNum + 1);
+	for (int i = 0; i < itemNum; i++) {
+		CollectionItem *item = [[CollectionItem alloc] init];
+		item.text = [NSString stringWithFormat:@"%d", i];
+		int imageNumber = arc4random() % 5 + 1;
+		item.image_name = [NSString stringWithFormat:@"sample_image_%d", imageNumber];
+		[self.collectionItems addObject:item];
+	}
+	[self.collectionView reloadData];
 }
 
 #pragma mark - UICollectionView
@@ -136,7 +165,25 @@
 	return [CollectionViewCell height:self.collectionItems[indexPath.item]];
 }
 
-#pragma mark -
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+	// NSLog(@"\nX:%f\nY:%f", scrollView.contentOffset.x, scrollView.contentOffset.y);
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView
+				  willDecelerate:(BOOL)decelerate
+{
+	// NSLog(@"\nX:%f\nY:%f", scrollView.contentOffset.x, scrollView.contentOffset.y);
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+	// NSLog(@"\nX:%f\nY:%f", scrollView.contentOffset.x, scrollView.contentOffset.y);
+	int page = scrollView.contentOffset.x / self.view.frame.size.width;
+	NSLog(@"page = %d", page);
+}
 
 /*
 #pragma mark - Navigation
