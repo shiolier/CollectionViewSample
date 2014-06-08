@@ -17,7 +17,6 @@
 
 @property (nonatomic) UICollectionView *collectionView;
 @property (nonatomic) NSMutableArray *collectionItems;
-@property (nonatomic) UIView *scrollContentView;
 
 @end
 
@@ -51,17 +50,56 @@
 	scrollView.delegate = self;
 	// スクロール方法をページ単位にする
 	scrollView.pagingEnabled = YES;
+	scrollView.bounds = CGRectMake(0, 0, scrollView.frame.size.width, scrollView.frame.size.height);
 	[self.view addSubview:scrollView];
 	
 	int pageNum = 3;
 	CGSize onePageSize = scrollView.frame.size;
 	CGRect contentRect = CGRectMake(0, 0, onePageSize.width * pageNum, onePageSize.height);
 	
-	self.scrollContentView = [[UIView alloc] initWithFrame:contentRect];
-	[scrollView addSubview:self.scrollContentView];
+	UIView *scrollContentView = [[UIView alloc] initWithFrame:contentRect];
+	[scrollView addSubview:scrollContentView];
+	
+	CGFloat selfViewWidth = self.view.frame.size.width;
+	CGFloat selfViewWidthHalf = selfViewWidth / 2;
+	int buttonNum = 0;
+	
+	UIButton *button1 = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 40)];
+	button1.center = CGPointMake(selfViewWidthHalf + (selfViewWidth * buttonNum), scrollContentView.center.y);
+	button1.tag = 1;
+	button1.titleLabel.font = [UIFont systemFontOfSize:15];
+	[button1 setTitle:@"更新1" forState:UIControlStateNormal];
+	[button1 setTitleColor:[UIColor colorWithRed:0 / 255.0f green:128 / 255.0f blue:255 / 255.0f alpha: 1.0f] forState:UIControlStateNormal];
+	[button1 setTitleColor:[UIColor colorWithRed:0 / 255.0f green:128 / 255.0f blue:255 / 255.0f alpha: 0.5f] forState:UIControlStateHighlighted];
+	[button1 addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+	[scrollContentView	addSubview:button1];
+	
+	buttonNum++;
+	
+	UIButton *button2 = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2, 0, 50, 40)];
+	button2.center = CGPointMake(selfViewWidthHalf + (selfViewWidth * buttonNum), scrollContentView.center.y);
+	button2.tag = 2;
+	button2.titleLabel.font = [UIFont systemFontOfSize:15];
+	[button2 setTitle:@"更新2" forState:UIControlStateNormal];
+	[button2 setTitleColor:[UIColor colorWithRed:0 / 255.0f green:128 / 255.0f blue:255 / 255.0f alpha: 1.0f] forState:UIControlStateNormal];
+	[button2 setTitleColor:[UIColor colorWithRed:0 / 255.0f green:128 / 255.0f blue:255 / 255.0f alpha: 0.5f] forState:UIControlStateHighlighted];
+	[button2 addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+	[scrollContentView	addSubview:button2];
+	
+	buttonNum++;
+	
+	UIButton *button3 = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width, 0, 50, 40)];
+	button3.center = CGPointMake(selfViewWidthHalf + (selfViewWidth * buttonNum), scrollContentView.center.y);
+	button3.tag = 3;
+	button3.titleLabel.font = [UIFont systemFontOfSize:15];
+	[button3 setTitle:@"更新3" forState:UIControlStateNormal];
+	[button3 setTitleColor:[UIColor colorWithRed:0 / 255.0f green:128 / 255.0f blue:255 / 255.0f alpha: 1.0f] forState:UIControlStateNormal];
+	[button3 setTitleColor:[UIColor colorWithRed:0 / 255.0f green:128 / 255.0f blue:255 / 255.0f alpha: 0.5f] forState:UIControlStateHighlighted];
+	[button3 addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+	[scrollContentView	addSubview:button3];
 	
 	// スクロールするコンテントサイズを指定する
-	scrollView.contentSize = self.scrollContentView.frame.size;
+	scrollView.contentSize = scrollContentView.frame.size;
 	// スクロール画面の初期位置を指定する
 	scrollView.contentOffset = CGPointZero;
 	
@@ -102,6 +140,11 @@
 		[self.collectionItems addObject:item];
 	}
 	[self.collectionView reloadData];
+}
+
+- (void)buttonAction:(UIButton *)button
+{
+	[self changeCollectionItems:(int)button.tag];
 }
 
 #pragma mark - UICollectionView
