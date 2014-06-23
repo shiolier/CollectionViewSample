@@ -10,4 +10,10 @@
 
 @interface ViewController : UIViewController
 
+@property (nonatomic) UIScrollView *buttonScrollView;
+@property (nonatomic) UIScrollView *photoScrollView;
+
+@property (nonatomic) UIView *buttonContentView;
+@property (nonatomic) UIView *photoContentView;
+
 @end

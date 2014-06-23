@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C706A2F4B87044B992CB7B6A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 717BFB30ADAB4516B9529084 /* libPods.a */; };
+		FC13BD6A1958147E003C94AF /* Panorama4ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC13BD691958147E003C94AF /* Panorama4ViewController.m */; };
+		FC13BD6D19581493003C94AF /* Panorama5ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC13BD6C19581493003C94AF /* Panorama5ViewController.m */; };
+		FC37ED061946F5BB0044E4E3 /* InfinitePagingView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC37ED051946F5BB0044E4E3 /* InfinitePagingView.m */; };
 		FC48DD82193C747D00A38A78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC48DD81193C747D00A38A78 /* Foundation.framework */; };
 		FC48DD84193C747D00A38A78 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC48DD83193C747D00A38A78 /* CoreGraphics.framework */; };
 		FC48DD86193C747D00A38A78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC48DD85193C747D00A38A78 /* UIKit.framework */; };
@@ -21,7 +25,6 @@
 		FC48DDA7193C747D00A38A78 /* CollectionViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FC48DDA6193C747D00A38A78 /* CollectionViewTests.m */; };
 		FC48DDB2193C749D00A38A78 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC48DDB1193C749D00A38A78 /* ViewController.m */; };
 		FC48DDB6193C7D5200A38A78 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC48DDB5193C7D5200A38A78 /* CollectionViewCell.m */; };
-		FC4E5542193DB6CD006272FF /* CollectionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4E5541193DB6CD006272FF /* CollectionItem.m */; };
 		FC4E5545193DBCF3006272FF /* FRGWaterfallCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4E5544193DBCF3006272FF /* FRGWaterfallCollectionViewLayout.m */; };
 		FC4E5548193DBDD6006272FF /* FRGWaterfallDecorationReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4E5547193DBDD6006272FF /* FRGWaterfallDecorationReusableView.m */; };
 		FC4E554F193DC38E006272FF /* sample_image_1.png in Resources */ = {isa = PBXBuildFile; fileRef = FC4E554A193DC38E006272FF /* sample_image_1.png */; };
@@ -30,6 +33,14 @@
 		FC4E5552193DC38E006272FF /* sample_image_4.png in Resources */ = {isa = PBXBuildFile; fileRef = FC4E554D193DC38E006272FF /* sample_image_4.png */; };
 		FC4E5553193DC38E006272FF /* sample_image_5.png in Resources */ = {isa = PBXBuildFile; fileRef = FC4E554E193DC38E006272FF /* sample_image_5.png */; };
 		FC4E5555193DD175006272FF /* sample_image.png in Resources */ = {isa = PBXBuildFile; fileRef = FC4E5554193DD175006272FF /* sample_image.png */; };
+		FC9F845F194EDF39005EDF58 /* BasePanoramaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9F845E194EDF39005EDF58 /* BasePanoramaViewController.m */; };
+		FC9F8462194EE083005EDF58 /* Panorama1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9F8461194EE083005EDF58 /* Panorama1ViewController.m */; };
+		FC9F8465194EE511005EDF58 /* BaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9F8464194EE511005EDF58 /* BaseEntity.m */; };
+		FC9F8468194EE548005EDF58 /* PanoramioEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9F8467194EE548005EDF58 /* PanoramioEntity.m */; };
+		FCB26DD8195025C5003A6C78 /* GetPanorama.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB26DD7195025C5003A6C78 /* GetPanorama.m */; };
+		FCB26DDB195044A8003A6C78 /* Panorama2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB26DDA195044A8003A6C78 /* Panorama2ViewController.m */; };
+		FCB26DDE19504548003A6C78 /* Panorama3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB26DDD19504548003A6C78 /* Panorama3ViewController.m */; };
+		FCD4FC66194EDA3700DD0BAD /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD4FC65194EDA3600DD0BAD /* APIClient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +54,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5CBC3E069EB1432794010DE6 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		717BFB30ADAB4516B9529084 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC13BD681958147E003C94AF /* Panorama4ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Panorama4ViewController.h; sourceTree = "<group>"; };
+		FC13BD691958147E003C94AF /* Panorama4ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Panorama4ViewController.m; sourceTree = "<group>"; };
+		FC13BD6B19581493003C94AF /* Panorama5ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Panorama5ViewController.h; sourceTree = "<group>"; };
+		FC13BD6C19581493003C94AF /* Panorama5ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Panorama5ViewController.m; sourceTree = "<group>"; };
+		FC37ED041946F5BB0044E4E3 /* InfinitePagingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfinitePagingView.h; sourceTree = "<group>"; };
+		FC37ED051946F5BB0044E4E3 /* InfinitePagingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfinitePagingView.m; sourceTree = "<group>"; };
 		FC48DD7E193C747D00A38A78 /* CollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC48DD81193C747D00A38A78 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FC48DD83193C747D00A38A78 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -63,8 +82,6 @@
 		FC48DDB1193C749D00A38A78 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		FC48DDB4193C7D5200A38A78 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
 		FC48DDB5193C7D5200A38A78 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
-		FC4E5540193DB6CD006272FF /* CollectionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionItem.h; sourceTree = "<group>"; };
-		FC4E5541193DB6CD006272FF /* CollectionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionItem.m; sourceTree = "<group>"; };
 		FC4E5543193DBCF3006272FF /* FRGWaterfallCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRGWaterfallCollectionViewLayout.h; sourceTree = "<group>"; };
 		FC4E5544193DBCF3006272FF /* FRGWaterfallCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRGWaterfallCollectionViewLayout.m; sourceTree = "<group>"; };
 		FC4E5546193DBDD6006272FF /* FRGWaterfallDecorationReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRGWaterfallDecorationReusableView.h; sourceTree = "<group>"; };
@@ -75,6 +92,22 @@
 		FC4E554D193DC38E006272FF /* sample_image_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample_image_4.png; sourceTree = "<group>"; };
 		FC4E554E193DC38E006272FF /* sample_image_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample_image_5.png; sourceTree = "<group>"; };
 		FC4E5554193DD175006272FF /* sample_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample_image.png; sourceTree = "<group>"; };
+		FC9F845D194EDF39005EDF58 /* BasePanoramaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasePanoramaViewController.h; sourceTree = "<group>"; };
+		FC9F845E194EDF39005EDF58 /* BasePanoramaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasePanoramaViewController.m; sourceTree = "<group>"; };
+		FC9F8460194EE083005EDF58 /* Panorama1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Panorama1ViewController.h; sourceTree = "<group>"; };
+		FC9F8461194EE083005EDF58 /* Panorama1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Panorama1ViewController.m; sourceTree = "<group>"; };
+		FC9F8463194EE511005EDF58 /* BaseEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseEntity.h; sourceTree = "<group>"; };
+		FC9F8464194EE511005EDF58 /* BaseEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseEntity.m; sourceTree = "<group>"; };
+		FC9F8466194EE548005EDF58 /* PanoramioEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanoramioEntity.h; sourceTree = "<group>"; };
+		FC9F8467194EE548005EDF58 /* PanoramioEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanoramioEntity.m; sourceTree = "<group>"; };
+		FCB26DD6195025C5003A6C78 /* GetPanorama.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetPanorama.h; sourceTree = "<group>"; };
+		FCB26DD7195025C5003A6C78 /* GetPanorama.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPanorama.m; sourceTree = "<group>"; };
+		FCB26DD9195044A8003A6C78 /* Panorama2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Panorama2ViewController.h; sourceTree = "<group>"; };
+		FCB26DDA195044A8003A6C78 /* Panorama2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Panorama2ViewController.m; sourceTree = "<group>"; };
+		FCB26DDC19504548003A6C78 /* Panorama3ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Panorama3ViewController.h; sourceTree = "<group>"; };
+		FCB26DDD19504548003A6C78 /* Panorama3ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Panorama3ViewController.m; sourceTree = "<group>"; };
+		FCD4FC64194EDA3600DD0BAD /* APIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIClient.h; sourceTree = "<group>"; };
+		FCD4FC65194EDA3600DD0BAD /* APIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIClient.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +118,7 @@
 				FC48DD84193C747D00A38A78 /* CoreGraphics.framework in Frameworks */,
 				FC48DD86193C747D00A38A78 /* UIKit.framework in Frameworks */,
 				FC48DD82193C747D00A38A78 /* Foundation.framework in Frameworks */,
+				C706A2F4B87044B992CB7B6A /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +135,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FC13BD6E19581E0E003C94AF /* PanoramaViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				FC9F845D194EDF39005EDF58 /* BasePanoramaViewController.h */,
+				FC9F845E194EDF39005EDF58 /* BasePanoramaViewController.m */,
+				FC9F8460194EE083005EDF58 /* Panorama1ViewController.h */,
+				FC9F8461194EE083005EDF58 /* Panorama1ViewController.m */,
+				FCB26DD9195044A8003A6C78 /* Panorama2ViewController.h */,
+				FCB26DDA195044A8003A6C78 /* Panorama2ViewController.m */,
+				FCB26DDC19504548003A6C78 /* Panorama3ViewController.h */,
+				FCB26DDD19504548003A6C78 /* Panorama3ViewController.m */,
+				FC13BD681958147E003C94AF /* Panorama4ViewController.h */,
+				FC13BD691958147E003C94AF /* Panorama4ViewController.m */,
+				FC13BD6B19581493003C94AF /* Panorama5ViewController.h */,
+				FC13BD6C19581493003C94AF /* Panorama5ViewController.m */,
+			);
+			name = PanoramaViewControllers;
+			sourceTree = "<group>";
+		};
 		FC48DD75193C747D00A38A78 = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +162,7 @@
 				FC48DDA0193C747D00A38A78 /* CollectionViewTests */,
 				FC48DD80193C747D00A38A78 /* Frameworks */,
 				FC48DD7F193C747D00A38A78 /* Products */,
+				5CBC3E069EB1432794010DE6 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +182,7 @@
 				FC48DD83193C747D00A38A78 /* CoreGraphics.framework */,
 				FC48DD85193C747D00A38A78 /* UIKit.framework */,
 				FC48DD9A193C747D00A38A78 /* XCTest.framework */,
+				717BFB30ADAB4516B9529084 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -139,14 +194,23 @@
 				FC48DD91193C747D00A38A78 /* AppDelegate.m */,
 				FC48DDB0193C749D00A38A78 /* ViewController.h */,
 				FC48DDB1193C749D00A38A78 /* ViewController.m */,
+				FC13BD6E19581E0E003C94AF /* PanoramaViewControllers */,
 				FC48DDB4193C7D5200A38A78 /* CollectionViewCell.h */,
 				FC48DDB5193C7D5200A38A78 /* CollectionViewCell.m */,
-				FC4E5540193DB6CD006272FF /* CollectionItem.h */,
-				FC4E5541193DB6CD006272FF /* CollectionItem.m */,
+				FC9F8463194EE511005EDF58 /* BaseEntity.h */,
+				FC9F8464194EE511005EDF58 /* BaseEntity.m */,
+				FC9F8466194EE548005EDF58 /* PanoramioEntity.h */,
+				FC9F8467194EE548005EDF58 /* PanoramioEntity.m */,
 				FC4E5546193DBDD6006272FF /* FRGWaterfallDecorationReusableView.h */,
 				FC4E5547193DBDD6006272FF /* FRGWaterfallDecorationReusableView.m */,
 				FC4E5543193DBCF3006272FF /* FRGWaterfallCollectionViewLayout.h */,
 				FC4E5544193DBCF3006272FF /* FRGWaterfallCollectionViewLayout.m */,
+				FC37ED041946F5BB0044E4E3 /* InfinitePagingView.h */,
+				FC37ED051946F5BB0044E4E3 /* InfinitePagingView.m */,
+				FCD4FC64194EDA3600DD0BAD /* APIClient.h */,
+				FCD4FC65194EDA3600DD0BAD /* APIClient.m */,
+				FCB26DD6195025C5003A6C78 /* GetPanorama.h */,
+				FCB26DD7195025C5003A6C78 /* GetPanorama.m */,
 				FC48DD93193C747D00A38A78 /* Images.xcassets */,
 				FC48DD88193C747D00A38A78 /* Supporting Files */,
 			);
@@ -203,9 +267,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FC48DDAA193C747D00A38A78 /* Build configuration list for PBXNativeTarget "CollectionView" */;
 			buildPhases = (
+				A624014CB049483081105FB0 /* Check Pods Manifest.lock */,
 				FC48DD7A193C747D00A38A78 /* Sources */,
 				FC48DD7B193C747D00A38A78 /* Frameworks */,
 				FC48DD7C193C747D00A38A78 /* Resources */,
+				A86D1BF243C3458595BF4A66 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -291,17 +357,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A624014CB049483081105FB0 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A86D1BF243C3458595BF4A66 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FC48DD7A193C747D00A38A78 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCB26DDE19504548003A6C78 /* Panorama3ViewController.m in Sources */,
 				FC4E5548193DBDD6006272FF /* FRGWaterfallDecorationReusableView.m in Sources */,
+				FC13BD6D19581493003C94AF /* Panorama5ViewController.m in Sources */,
+				FCB26DD8195025C5003A6C78 /* GetPanorama.m in Sources */,
 				FC48DDB2193C749D00A38A78 /* ViewController.m in Sources */,
+				FC9F845F194EDF39005EDF58 /* BasePanoramaViewController.m in Sources */,
+				FCB26DDB195044A8003A6C78 /* Panorama2ViewController.m in Sources */,
+				FC13BD6A1958147E003C94AF /* Panorama4ViewController.m in Sources */,
+				FC9F8468194EE548005EDF58 /* PanoramioEntity.m in Sources */,
 				FC48DD92193C747D00A38A78 /* AppDelegate.m in Sources */,
-				FC4E5542193DB6CD006272FF /* CollectionItem.m in Sources */,
+				FCD4FC66194EDA3700DD0BAD /* APIClient.m in Sources */,
+				FC9F8462194EE083005EDF58 /* Panorama1ViewController.m in Sources */,
+				FC9F8465194EE511005EDF58 /* BaseEntity.m in Sources */,
 				FC48DDB6193C7D5200A38A78 /* CollectionViewCell.m in Sources */,
 				FC48DD8E193C747D00A38A78 /* main.m in Sources */,
+				FC37ED061946F5BB0044E4E3 /* InfinitePagingView.m in Sources */,
 				FC4E5545193DBCF3006272FF /* FRGWaterfallCollectionViewLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -416,6 +525,7 @@
 		};
 		FC48DDAB193C747D00A38A78 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CBC3E069EB1432794010DE6 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -429,6 +539,7 @@
 		};
 		FC48DDAC193C747D00A38A78 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CBC3E069EB1432794010DE6 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

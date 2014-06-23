@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class CollectionItem;
+@class PanoramioEntity;
 
 @interface CollectionViewCell : UICollectionViewCell
 
-@property (nonatomic) CollectionItem *collectionItem;
+@property (nonatomic) PanoramioEntity *entity;
 
-+ (CGFloat)height:(CollectionItem *)item;
++ (CGFloat)height:(PanoramioEntity *)item;
 
 @end

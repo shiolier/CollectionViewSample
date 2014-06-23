@@ -8,15 +8,25 @@
 
 #import "ViewController.h"
 #import "CollectionViewCell.h"
-#import "CollectionItem.h"
 #import "FRGWaterfallCollectionViewLayout.h"
+#import "InfinitePagingView.h"
+#import "Panorama1ViewController.h"
+#import "Panorama2ViewController.h"
+#import "Panorama3ViewController.h"
+#import "Panorama4ViewController.h"
+#import "Panorama5ViewController.h"
 
 #define CellID @"CollectionViewCell"
 
-@interface ViewController () <UICollectionViewDelegate, UICollectionViewDataSource, FRGWaterfallCollectionViewDelegate, UIScrollViewDelegate>
+@interface ViewController () // <UICollectionViewDelegate, UICollectionViewDataSource, FRGWaterfallCollectionViewDelegate, UIScrollViewDelegate>
+<UIScrollViewDelegate>
 
-@property (nonatomic) UICollectionView *collectionView;
-@property (nonatomic) NSMutableArray *collectionItems;
+//@property (nonatomic) UICollectionView *collectionView;
+//@property (nonatomic) NSMutableArray *collectionItems;
+@property (nonatomic) UIView *buttonScrollContentView;
+@property (nonatomic) UIView *scrollContentView;
+@property (nonatomic) NSMutableArray *collectionViewControllers;
+@property (nonatomic) int currentPage;
 
 @end
 
@@ -36,117 +46,201 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 	
-//	UICollectionViewFlowLayout *collectionViewFlowLayout = [[UICollectionViewFlowLayout alloc] init];
-//	// アイテムサイズ
-//	collectionViewFlowLayout.itemSize = CGSizeMake(150, 150);
-//	// セクションとアイテムの間隔
-//	collectionViewFlowLayout.minimumLineSpacing = 5.0f;
-//	// アイテム同士の間隔
-//    collectionViewFlowLayout.minimumInteritemSpacing = 10.0f;
-	
-	[self changeCollectionItems:0];
-	
-	UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100)];
-	scrollView.delegate = self;
-	// スクロール方法をページ単位にする
-	scrollView.pagingEnabled = YES;
-	scrollView.bounds = CGRectMake(0, 0, scrollView.frame.size.width, scrollView.frame.size.height);
-	[self.view addSubview:scrollView];
-	
-	int pageNum = 3;
-	CGSize onePageSize = scrollView.frame.size;
-	CGRect contentRect = CGRectMake(0, 0, onePageSize.width * pageNum, onePageSize.height);
-	
-	UIView *scrollContentView = [[UIView alloc] initWithFrame:contentRect];
-	[scrollView addSubview:scrollContentView];
-	
-	CGFloat selfViewWidth = self.view.frame.size.width;
-	CGFloat selfViewWidthHalf = selfViewWidth / 2;
-	int buttonNum = 0;
-	
-	UIButton *button1 = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 40)];
-	button1.center = CGPointMake(selfViewWidthHalf + (selfViewWidth * buttonNum), scrollContentView.center.y);
-	button1.tag = 1;
-	button1.titleLabel.font = [UIFont systemFontOfSize:15];
-	[button1 setTitle:@"更新1" forState:UIControlStateNormal];
-	[button1 setTitleColor:[UIColor colorWithRed:0 / 255.0f green:128 / 255.0f blue:255 / 255.0f alpha: 1.0f] forState:UIControlStateNormal];
-	[button1 setTitleColor:[UIColor colorWithRed:0 / 255.0f green:128 / 255.0f blue:255 / 255.0f alpha: 0.5f] forState:UIControlStateHighlighted];
-	[button1 addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
-	[scrollContentView	addSubview:button1];
-	
-	buttonNum++;
-	
-	UIButton *button2 = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2, 0, 50, 40)];
-	button2.center = CGPointMake(selfViewWidthHalf + (selfViewWidth * buttonNum), scrollContentView.center.y);
-	button2.tag = 2;
-	button2.titleLabel.font = [UIFont systemFontOfSize:15];
-	[button2 setTitle:@"更新2" forState:UIControlStateNormal];
-	[button2 setTitleColor:[UIColor colorWithRed:0 / 255.0f green:128 / 255.0f blue:255 / 255.0f alpha: 1.0f] forState:UIControlStateNormal];
-	[button2 setTitleColor:[UIColor colorWithRed:0 / 255.0f green:128 / 255.0f blue:255 / 255.0f alpha: 0.5f] forState:UIControlStateHighlighted];
-	[button2 addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
-	[scrollContentView	addSubview:button2];
-	
-	buttonNum++;
-	
-	UIButton *button3 = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width, 0, 50, 40)];
-	button3.center = CGPointMake(selfViewWidthHalf + (selfViewWidth * buttonNum), scrollContentView.center.y);
-	button3.tag = 3;
-	button3.titleLabel.font = [UIFont systemFontOfSize:15];
-	[button3 setTitle:@"更新3" forState:UIControlStateNormal];
-	[button3 setTitleColor:[UIColor colorWithRed:0 / 255.0f green:128 / 255.0f blue:255 / 255.0f alpha: 1.0f] forState:UIControlStateNormal];
-	[button3 setTitleColor:[UIColor colorWithRed:0 / 255.0f green:128 / 255.0f blue:255 / 255.0f alpha: 0.5f] forState:UIControlStateHighlighted];
-	[button3 addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
-	[scrollContentView	addSubview:button3];
-	
-	// スクロールするコンテントサイズを指定する
-	scrollView.contentSize = scrollContentView.frame.size;
-	// スクロール画面の初期位置を指定する
-	scrollView.contentOffset = CGPointZero;
-	
-	FRGWaterfallCollectionViewLayout *collectionViewLayout = [[FRGWaterfallCollectionViewLayout alloc] init];
-	collectionViewLayout.delegate = self;
-	collectionViewLayout.itemWidth = 150.0f;
-	collectionViewLayout.topInset = 10.0f;
-	collectionViewLayout.bottomInset = 10.0f;
-	collectionViewLayout.stickyHeader = YES;
-	
-	self.collectionView =
-	[[UICollectionView alloc] initWithFrame:CGRectMake(0, 100,
-													   self.view.frame.size.width, self.view.frame.size.height - 100)
-					   collectionViewLayout:collectionViewLayout];
-	self.collectionView.delegate = self;
-	self.collectionView.dataSource = self;
-	// self.collectionView.backgroundColor = [UIColor whiteColor];
-	[self.collectionView registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:CellID];
-	[self.view addSubview:self.collectionView];
-	
-}
+//	[self changeCollectionItems:0];
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (void)changeCollectionItems:(int)pageNum
-{
-	self.collectionItems = [NSMutableArray array];
-	int itemNum = 10 * (pageNum + 1);
-	for (int i = 0; i < itemNum; i++) {
-		CollectionItem *item = [[CollectionItem alloc] init];
-		item.text = [NSString stringWithFormat:@"%d", i];
-		int imageNumber = arc4random() % 5 + 1;
-		item.image_name = [NSString stringWithFormat:@"sample_image_%d", imageNumber];
-		[self.collectionItems addObject:item];
+	[self.view addSubview:self.buttonScrollView];
+	[self.view addSubview:self.photoScrollView];
+	
+#pragma mark - 無限のおまじない
+	/*
+	// http://qiita.com/caesar_cat/items/f6a60b6bb6880ea18139
+	InfinitePagingView *infinitePagingView = [[InfinitePagingView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100)];
+	infinitePagingView.pageSize = CGSizeMake(self.view.frame.size.width / 2, infinitePagingView.frame.size.height);
+	for (int i = 0; i < 5; i++) {
+		UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 40)];
+		button.userInteractionEnabled = YES;
+		button.tag = i;
+		[button setTitle:[NSString stringWithFormat:@"更新%d", i] forState:UIControlStateNormal];
+		[button setTitleColor:[UIColor colorWithRed:0 / 255.0f green:128 / 255.0f blue:255 / 255.0f alpha: 1.0f] forState:UIControlStateNormal];
+		[button setTitleColor:[UIColor colorWithRed:0 / 255.0f green:128 / 255.0f blue:255 / 255.0f alpha: 0.5f] forState:UIControlStateHighlighted];
+		[button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+		[infinitePagingView	addPageView:button];
 	}
-	[self.collectionView reloadData];
+	[self.view addSubview:infinitePagingView];
+	 */
+	
+}
+
+#pragma mark - instance
+
+-(UIScrollView *)buttonScrollView {
+	if (!_buttonScrollView) {
+		_buttonScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100)];
+		_buttonScrollView.delegate = self;
+		// スクロール方法をページ単位にする
+		_buttonScrollView.pagingEnabled = YES;
+		[_buttonScrollView addSubview:self.buttonContentView];
+		_buttonScrollView.contentSize = self.buttonContentView.frame.size;
+	}
+	return _buttonScrollView;
+}
+
+-(UIView *)buttonContentView {
+	if (!_buttonContentView) {
+		int pageNum = 5;
+		CGSize onePageSize = _buttonScrollView.frame.size;
+		CGRect buttonContentRect = CGRectMake(0, 0, onePageSize.width * pageNum, onePageSize.height);
+		_buttonContentView = [[UIView alloc]initWithFrame:buttonContentRect];
+		
+		CGFloat selfViewWidth = self.view.frame.size.width;
+		CGFloat selfViewWidthHalf = selfViewWidth / 2;
+		
+		for (int i = 0; i < pageNum; i++) {
+			UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 40)];
+			button.center = CGPointMake(selfViewWidthHalf + (selfViewWidth * i), _buttonContentView.center.y);
+			button.tag = i + 800;
+			[button setTitle:[NSString stringWithFormat:@"更新%d", i] forState:UIControlStateNormal];
+			[button setTitleColor:[UIColor colorWithRed:0 / 255.0f green:128 / 255.0f blue:255 / 255.0f alpha: 1.0f] forState:UIControlStateNormal];
+			[button setTitleColor:[UIColor colorWithRed:0 / 255.0f green:128 / 255.0f blue:255 / 255.0f alpha: 0.5f] forState:UIControlStateHighlighted];
+			[button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+			[_buttonContentView	addSubview:button];
+		}
+	}
+	return _buttonContentView;
+}
+
+-(UIScrollView *)photoScrollView {
+	if (!_photoScrollView) {
+		_photoScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, self.view.frame.size.height - 100)];
+		_photoScrollView.delegate = self;
+		// スクロール方法をページ単位にする
+		_photoScrollView.pagingEnabled = YES;
+		[_photoScrollView addSubview:self.photoContentView];
+		_photoScrollView.contentSize = self.photoContentView.frame.size;
+	}
+	return _photoScrollView;
+}
+
+-(UIView *)photoContentView {
+	if (!_photoContentView) {
+		_photoContentView = [UIView new];
+		for (int i = 0; i < self.collectionViewControllers.count; i++) {
+			UIViewController *vc = self.collectionViewControllers[i];
+            [vc willMoveToParentViewController:self];
+            [self addChildViewController:vc];
+            [_photoContentView addSubview:vc.view];
+            [vc didMoveToParentViewController:self];
+            
+            vc.view.frame = CGRectMake(_photoScrollView.bounds.size.width * i, 0,
+                                       _photoScrollView.bounds.size.width, _photoScrollView.bounds.size.height);
+            
+            CGRect r = _photoContentView.frame;
+            r.size.width = vc.view.frame.size.width+vc.view.frame.origin.x;
+            _photoContentView.frame = r;
+		}
+	}
+	return _photoContentView;
+}
+
+-(NSMutableArray *)collectionViewControllers {
+	if (!_collectionViewControllers) {
+		_collectionViewControllers = @[
+									   [Panorama1ViewController new],
+									   [Panorama2ViewController new],
+									   [Panorama3ViewController new],
+									   [Panorama4ViewController new],
+									   [Panorama5ViewController new],
+									   ].mutableCopy;
+	}
+	return _collectionViewControllers;
+}
+
+#pragma mark -
+
+- (void)changeFromViewControllerNumber:(int)fromNum
+				toViewControllerNumber:(int)toNum
+{
+	if (fromNum == toNum) {
+		return;
+	}
+	
+	self.currentPage = toNum;
+	
+	UIViewController *fromVC = self.collectionViewControllers[toNum];
+	UIViewController *toVC = self.collectionViewControllers[fromNum];
+	
+	// 古いViewControllerに取り除かれようとしていることを通知する
+	[fromVC willMoveToParentViewController:nil];
+	
+	CGFloat width  = self.view.frame.size.width;
+	CGFloat height = self.view.frame.size.height - 100;
+	
+	CGPoint fromEndPos;
+	CGPoint toStartPos;
+	if (fromNum < toNum) {
+		fromEndPos = CGPointMake(0 - self.view.frame.size.width, 100);
+		toStartPos = CGPointMake(self.view.frame.size.width, 100);
+	} else {
+		fromEndPos = CGPointMake(self.view.frame.size.width, 100);
+		toStartPos = CGPointMake(0 - self.view.frame.size.width, 100);
+	}
+	
+	[self addChildViewController:toVC];
+	toVC.view.frame = CGRectMake(toStartPos.x, toStartPos.y,
+								 width, height);
+	
+	[toVC didMoveToParentViewController:self];
+	
+	[self transitionFromViewController:fromVC
+					  toViewController:toVC
+							  duration:0.25
+							   options:0
+							animations:^{
+								toVC.view.frame = CGRectMake(0, 100,
+															 width, height);
+								fromVC.view.frame = CGRectMake(fromEndPos.x, fromEndPos.y,
+															   width, height);
+							}
+							completion:^(BOOL finished) {
+								[fromVC.view removeFromSuperview];
+								[fromVC removeFromParentViewController];
+								[toVC didMoveToParentViewController:self];
+							}];
+}
+- (void)addPanoramaViewController:(UIViewController *)viewController
+{
+	viewController.view.frame = CGRectMake(0 - self.view.frame.size.width, 100,
+										   self.view.frame.size.width, self.view.frame.size.height - 100);
+	[self addChildViewController:viewController];
+	// [self.view addSubview:viewController.view];
+	[viewController didMoveToParentViewController:self];
+	[self.collectionViewControllers addObject:viewController];
+}
+
+- (void)addPanoramaViewController:(UIViewController *)viewController
+						  pageNum:(int)pageNum
+{
+	viewController.view.frame = CGRectMake(0 - self.view.frame.size.width, 100,
+										   self.view.frame.size.width, self.view.frame.size.height - 100);
+	[self addChildViewController:viewController];
+	[self.view addSubview:viewController.view];
+	[viewController didMoveToParentViewController:self];
+	[self.collectionViewControllers addObject:viewController];
 }
 
 - (void)buttonAction:(UIButton *)button
 {
-	[self changeCollectionItems:(int)button.tag];
+	NSLog(@"\ncurrent : %d\nnext : %d",self.currentPage, button.tag);
+	
+	CGRect frame = self.photoScrollView.bounds;
+    frame.origin.x = frame.size.width * (button.tag - 800);
+    [self.photoScrollView scrollRectToVisible:frame animated:YES];
+	
+	// [self animationFromViewControllerNumber:self.currentPage toViewControllerNumber:button.tag];
+//	[self changeFromViewControllerNumber:self.currentPage toViewControllerNumber:button.tag];
 }
 
+/*
 #pragma mark - UICollectionView
 #pragma mark UICollectionViewDataSource
 
@@ -157,16 +251,16 @@
 	
 	cell.collectionItem = self.collectionItems[indexPath.item];
 	
-//	cell.label.text = [NSString stringWithFormat:@"%ld-%ld", indexPath.section, indexPath.row];
-//	cell.imageView.image = [UIImage imageNamed:@"sample_image"];
+	cell.label.text = [NSString stringWithFormat:@"%ld-%ld", indexPath.section, indexPath.row];
+	cell.imageView.image = [UIImage imageNamed:@"sample_image"];
 	
-//	if (indexPath.section == 0) {
-//        cell.backgroundColor =[UIColor redColor];
-//    } else if (indexPath.section == 1) {
-//        cell.backgroundColor =[UIColor greenColor];
-//    } else {
-//        cell.backgroundColor =[UIColor blueColor];
-//    }
+	if (indexPath.section == 0) {
+        cell.backgroundColor =[UIColor redColor];
+    } else if (indexPath.section == 1) {
+        cell.backgroundColor =[UIColor greenColor];
+    } else {
+        cell.backgroundColor =[UIColor blueColor];
+	}
 	
 	cell.backgroundColor = [UIColor whiteColor];
 	
@@ -177,17 +271,17 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView
 	 numberOfItemsInSection:(NSInteger)section
 {
-//	if (section == 0) {
-//		return 3;
-//	} else if (section == 1) {
-//		return 5;
-//	} else if (section == 2) {
-//		return 10;
-//	} else if (section == 3) {
-//		return 20;
-//	} else {
-//		return 30;
-//	}
+	if (section == 0) {
+		return 3;
+	} else if (section == 1) {
+		return 5;
+	} else if (section == 2) {
+		return 10;
+	} else if (section == 3) {
+		return 20;
+	} else {
+		return 30;
+	}
 	return self.collectionItems.count;
 }
 
@@ -207,6 +301,7 @@
 {
 	return [CollectionViewCell height:self.collectionItems[indexPath.item]];
 }
+*/
 
 #pragma mark - UIScrollViewDelegate
 
@@ -224,8 +319,8 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
 	// NSLog(@"\nX:%f\nY:%f", scrollView.contentOffset.x, scrollView.contentOffset.y);
-	int page = scrollView.contentOffset.x / self.view.frame.size.width;
-	NSLog(@"page = %d", page);
+	int currentPage = scrollView.contentOffset.x / self.view.frame.size.width;
+	NSLog(@"currentPage = %d", currentPage);
 }
 
 /*
