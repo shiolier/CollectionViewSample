@@ -37,6 +37,7 @@
 		FC9F8462194EE083005EDF58 /* Panorama1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9F8461194EE083005EDF58 /* Panorama1ViewController.m */; };
 		FC9F8465194EE511005EDF58 /* BaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9F8464194EE511005EDF58 /* BaseEntity.m */; };
 		FC9F8468194EE548005EDF58 /* PanoramioEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9F8467194EE548005EDF58 /* PanoramioEntity.m */; };
+		FCAA13E91959A64B00457895 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCAA13E81959A64B00457895 /* WebViewController.m */; };
 		FCB26DD8195025C5003A6C78 /* GetPanorama.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB26DD7195025C5003A6C78 /* GetPanorama.m */; };
 		FCB26DDB195044A8003A6C78 /* Panorama2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB26DDA195044A8003A6C78 /* Panorama2ViewController.m */; };
 		FCB26DDE19504548003A6C78 /* Panorama3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB26DDD19504548003A6C78 /* Panorama3ViewController.m */; };
@@ -100,6 +101,8 @@
 		FC9F8464194EE511005EDF58 /* BaseEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseEntity.m; sourceTree = "<group>"; };
 		FC9F8466194EE548005EDF58 /* PanoramioEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanoramioEntity.h; sourceTree = "<group>"; };
 		FC9F8467194EE548005EDF58 /* PanoramioEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanoramioEntity.m; sourceTree = "<group>"; };
+		FCAA13E71959A64B00457895 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		FCAA13E81959A64B00457895 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		FCB26DD6195025C5003A6C78 /* GetPanorama.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetPanorama.h; sourceTree = "<group>"; };
 		FCB26DD7195025C5003A6C78 /* GetPanorama.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPanorama.m; sourceTree = "<group>"; };
 		FCB26DD9195044A8003A6C78 /* Panorama2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Panorama2ViewController.h; sourceTree = "<group>"; };
@@ -197,6 +200,8 @@
 				FC13BD6E19581E0E003C94AF /* PanoramaViewControllers */,
 				FC48DDB4193C7D5200A38A78 /* CollectionViewCell.h */,
 				FC48DDB5193C7D5200A38A78 /* CollectionViewCell.m */,
+				FCAA13E71959A64B00457895 /* WebViewController.h */,
+				FCAA13E81959A64B00457895 /* WebViewController.m */,
 				FC9F8463194EE511005EDF58 /* BaseEntity.h */,
 				FC9F8464194EE511005EDF58 /* BaseEntity.m */,
 				FC9F8466194EE548005EDF58 /* PanoramioEntity.h */,
@@ -408,6 +413,7 @@
 				FCD4FC66194EDA3700DD0BAD /* APIClient.m in Sources */,
 				FC9F8462194EE083005EDF58 /* Panorama1ViewController.m in Sources */,
 				FC9F8465194EE511005EDF58 /* BaseEntity.m in Sources */,
+				FCAA13E91959A64B00457895 /* WebViewController.m in Sources */,
 				FC48DDB6193C7D5200A38A78 /* CollectionViewCell.m in Sources */,
 				FC48DD8E193C747D00A38A78 /* main.m in Sources */,
 				FC37ED061946F5BB0044E4E3 /* InfinitePagingView.m in Sources */,

@@ -10,6 +10,7 @@
 #import "FRGWaterfallCollectionViewLayout.h"
 #import "CollectionViewCell.h"
 #import "PanoramioEntity.h"
+#import "WebViewController.h"
 
 @interface BasePanoramaViewController () <UICollectionViewDelegate, UICollectionViewDataSource, FRGWaterfallCollectionViewDelegate>
 
@@ -81,6 +82,14 @@
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
 	return 1;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+	PanoramioEntity *entity = self.entities[indexPath.item];
+	WebViewController *webViewController = [[WebViewController alloc] init];
+	webViewController.openURL = entity.photo_url;
+	[self.navigationController pushViewController:webViewController animated:YES];
 }
 
 @end
