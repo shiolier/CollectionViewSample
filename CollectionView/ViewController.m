@@ -18,15 +18,16 @@
 
 #define CellID @"CollectionViewCell"
 
-@interface ViewController () // <UICollectionViewDelegate, UICollectionViewDataSource, FRGWaterfallCollectionViewDelegate, UIScrollViewDelegate>
-<UIScrollViewDelegate>
+@interface ViewController () <UIScrollViewDelegate>
 
-//@property (nonatomic) UICollectionView *collectionView;
-//@property (nonatomic) NSMutableArray *collectionItems;
-@property (nonatomic) UIView *buttonScrollContentView;
-@property (nonatomic) UIView *scrollContentView;
 @property (nonatomic) NSMutableArray *collectionViewControllers;
-@property (nonatomic) int currentPage;
+//@property (nonatomic) int currentPage;
+
+@property (nonatomic) UIScrollView *buttonScrollView;
+@property (nonatomic) UIScrollView *photoScrollView;
+
+@property (nonatomic) UIView *buttonContentView;
+@property (nonatomic) UIView *photoContentView;
 
 @end
 
@@ -45,14 +46,15 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+	// NavigationBarの左下座標をレイアウトの原点にする
+	self.navigationController.navigationBar.translucent = NO;
 	
-//	[self changeCollectionItems:0];
-
 	[self.view addSubview:self.buttonScrollView];
 	[self.view addSubview:self.photoScrollView];
 	
 #pragma mark - 無限のおまじない
 	/*
+	// 循環スクロール
 	// http://qiita.com/caesar_cat/items/f6a60b6bb6880ea18139
 	InfinitePagingView *infinitePagingView = [[InfinitePagingView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100)];
 	infinitePagingView.pageSize = CGSizeMake(self.view.frame.size.width / 2, infinitePagingView.frame.size.height);
@@ -75,12 +77,14 @@
 
 -(UIScrollView *)buttonScrollView {
 	if (!_buttonScrollView) {
-		_buttonScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100)];
+		// UINavigationBarの高さ 44 + ステータスバーの高さ 20
+		_buttonScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 80)];
 		_buttonScrollView.delegate = self;
 		// スクロール方法をページ単位にする
 		_buttonScrollView.pagingEnabled = YES;
 		[_buttonScrollView addSubview:self.buttonContentView];
-		_buttonScrollView.contentSize = self.buttonContentView.frame.size;
+		NSLog(@"hogehoge %@",NSStringFromCGSize(self.buttonContentView.bounds.size));
+		_buttonScrollView.contentSize = self.buttonContentView.bounds.size;
 	}
 	return _buttonScrollView;
 }
@@ -88,9 +92,11 @@
 -(UIView *)buttonContentView {
 	if (!_buttonContentView) {
 		int pageNum = 5;
-		CGSize onePageSize = _buttonScrollView.frame.size;
+		CGSize onePageSize = _buttonScrollView.bounds.size;
+		NSLog(@"button scroll view bounds : %@",NSStringFromCGSize(onePageSize));
 		CGRect buttonContentRect = CGRectMake(0, 0, onePageSize.width * pageNum, onePageSize.height);
 		_buttonContentView = [[UIView alloc]initWithFrame:buttonContentRect];
+		_buttonContentView.backgroundColor = [UIColor grayColor];
 		
 		CGFloat selfViewWidth = self.view.frame.size.width;
 		CGFloat selfViewWidthHalf = selfViewWidth / 2;
@@ -111,7 +117,7 @@
 
 -(UIScrollView *)photoScrollView {
 	if (!_photoScrollView) {
-		_photoScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, self.view.frame.size.height - 100)];
+		_photoScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 80, self.view.frame.size.width, self.view.frame.size.height - 80)];
 		_photoScrollView.delegate = self;
 		// スクロール方法をページ単位にする
 		_photoScrollView.pagingEnabled = YES;
@@ -133,11 +139,17 @@
             
             vc.view.frame = CGRectMake(_photoScrollView.bounds.size.width * i, 0,
                                        _photoScrollView.bounds.size.width, _photoScrollView.bounds.size.height);
-            
+            /*
             CGRect r = _photoContentView.frame;
             r.size.width = vc.view.frame.size.width+vc.view.frame.origin.x;
+			r.size.height = vc.view.frame.size.height;
             _photoContentView.frame = r;
+			 */
 		}
+		CGRect rect = _photoContentView.frame;
+		rect.size.width = self.view.frame.size.width * self.collectionViewControllers.count;
+		rect.size.height = _photoScrollView.frame.size.height;
+		_photoContentView.frame = rect;
 	}
 	return _photoContentView;
 }
@@ -155,89 +167,15 @@
 	return _collectionViewControllers;
 }
 
-#pragma mark -
-
-- (void)changeFromViewControllerNumber:(int)fromNum
-				toViewControllerNumber:(int)toNum
-{
-	if (fromNum == toNum) {
-		return;
-	}
-	
-	self.currentPage = toNum;
-	
-	UIViewController *fromVC = self.collectionViewControllers[toNum];
-	UIViewController *toVC = self.collectionViewControllers[fromNum];
-	
-	// 古いViewControllerに取り除かれようとしていることを通知する
-	[fromVC willMoveToParentViewController:nil];
-	
-	CGFloat width  = self.view.frame.size.width;
-	CGFloat height = self.view.frame.size.height - 100;
-	
-	CGPoint fromEndPos;
-	CGPoint toStartPos;
-	if (fromNum < toNum) {
-		fromEndPos = CGPointMake(0 - self.view.frame.size.width, 100);
-		toStartPos = CGPointMake(self.view.frame.size.width, 100);
-	} else {
-		fromEndPos = CGPointMake(self.view.frame.size.width, 100);
-		toStartPos = CGPointMake(0 - self.view.frame.size.width, 100);
-	}
-	
-	[self addChildViewController:toVC];
-	toVC.view.frame = CGRectMake(toStartPos.x, toStartPos.y,
-								 width, height);
-	
-	[toVC didMoveToParentViewController:self];
-	
-	[self transitionFromViewController:fromVC
-					  toViewController:toVC
-							  duration:0.25
-							   options:0
-							animations:^{
-								toVC.view.frame = CGRectMake(0, 100,
-															 width, height);
-								fromVC.view.frame = CGRectMake(fromEndPos.x, fromEndPos.y,
-															   width, height);
-							}
-							completion:^(BOOL finished) {
-								[fromVC.view removeFromSuperview];
-								[fromVC removeFromParentViewController];
-								[toVC didMoveToParentViewController:self];
-							}];
-}
-- (void)addPanoramaViewController:(UIViewController *)viewController
-{
-	viewController.view.frame = CGRectMake(0 - self.view.frame.size.width, 100,
-										   self.view.frame.size.width, self.view.frame.size.height - 100);
-	[self addChildViewController:viewController];
-	// [self.view addSubview:viewController.view];
-	[viewController didMoveToParentViewController:self];
-	[self.collectionViewControllers addObject:viewController];
-}
-
-- (void)addPanoramaViewController:(UIViewController *)viewController
-						  pageNum:(int)pageNum
-{
-	viewController.view.frame = CGRectMake(0 - self.view.frame.size.width, 100,
-										   self.view.frame.size.width, self.view.frame.size.height - 100);
-	[self addChildViewController:viewController];
-	[self.view addSubview:viewController.view];
-	[viewController didMoveToParentViewController:self];
-	[self.collectionViewControllers addObject:viewController];
-}
+#pragma mark - Action
 
 - (void)buttonAction:(UIButton *)button
 {
-	NSLog(@"\ncurrent : %d\nnext : %d",self.currentPage, button.tag);
+	int next = button.tag - 800;
 	
 	CGRect frame = self.photoScrollView.bounds;
-    frame.origin.x = frame.size.width * (button.tag - 800);
+    frame.origin.x = frame.size.width * (next);
     [self.photoScrollView scrollRectToVisible:frame animated:YES];
-	
-	// [self animationFromViewControllerNumber:self.currentPage toViewControllerNumber:button.tag];
-//	[self changeFromViewControllerNumber:self.currentPage toViewControllerNumber:button.tag];
 }
 
 /*
@@ -320,7 +258,13 @@
 {
 	// NSLog(@"\nX:%f\nY:%f", scrollView.contentOffset.x, scrollView.contentOffset.y);
 	int currentPage = scrollView.contentOffset.x / self.view.frame.size.width;
-	NSLog(@"currentPage = %d", currentPage);
+	// NSLog(@"currentPage = %d", currentPage);
+	
+	if ([scrollView isEqual:self.photoScrollView]) {
+		CGRect frame = self.photoScrollView.bounds;
+		frame.origin.x = frame.size.width * (currentPage);
+		[self.buttonScrollView scrollRectToVisible:frame animated:YES];
+	}
 }
 
 /*

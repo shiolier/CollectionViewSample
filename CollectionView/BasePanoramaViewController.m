@@ -9,6 +9,7 @@
 #import "BasePanoramaViewController.h"
 #import "FRGWaterfallCollectionViewLayout.h"
 #import "CollectionViewCell.h"
+#import "PanoramioEntity.h"
 
 @interface BasePanoramaViewController () <UICollectionViewDelegate, UICollectionViewDataSource, FRGWaterfallCollectionViewDelegate>
 
